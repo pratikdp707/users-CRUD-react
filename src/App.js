@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import React, { useState } from 'react'
 import './App.css';
+import NavBar from './Components/NavBar';
+import Users from './Components/Users';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import AddUser from './Components/AddUser';
+import UserDetails from './Components/UserData';
+import EditUser from './Components/EditUser'
 
 function App() {
+
+  const [id, setId] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Users id={id} setId={setId} />
+          </Route>
+          <Route exact path="/home">
+          <Users id={id} setId={setId} />
+            </Route>
+          <Route exact path="/user">
+            <Users id={id} setId={setId} />
+          </Route>
+          <Route exact path="/adduser">
+            <AddUser />
+          </Route>
+          <Route exact path="/user/:id">
+            <UserDetails />
+          </Route>
+          <Route exact path="/edituser/:id">
+            <EditUser />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
