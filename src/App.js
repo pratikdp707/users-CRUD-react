@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css';
 import NavBar from './Components/NavBar';
 import Users from './Components/Users';
@@ -13,21 +13,19 @@ import EditUser from './Components/EditUser'
 
 function App() {
 
-  const [id, setId] = useState(0);
-
   return (
     <div>
       <Router>
         <NavBar />
         <Switch>
           <Route exact path="/">
-            <Users id={id} setId={setId} />
+            <Users/>
           </Route>
           <Route exact path="/home">
-          <Users id={id} setId={setId} />
+          <Users/>
             </Route>
           <Route exact path="/user">
-            <Users id={id} setId={setId} />
+            <Users/>
           </Route>
           <Route exact path="/adduser">
             <AddUser />
